@@ -1,0 +1,612 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="tr"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="tr"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="tr"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="tr"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Zekioğlu Yapı Market</title>
+    <meta name="description" content="Zekioğlu Yapı Market - Boya, hırdavat ve yapı malzemeleri">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='template/apple-touch-icon.png') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='template/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='template/css/bootstrap-theme.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='template/css/fontAwesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='template/css/templatemo-style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <!-- Modernizr (head içinde kalsın) -->
+    <script src="{{ url_for('static', filename='template/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+  </head>
+  <body>
+
+    <div id="preloader">
+    <div class="loader-content">
+        <div class="spinner"></div>
+        <div class="loader-text">ZEKİOĞLU</div>
+    </div>
+    </div>
+
+    <div class="overlay"></div>
+    <section class="top-part"></section>
+    
+    <section class="cd-hero">
+      <div class="cd-slider-nav">
+        <nav>
+          <span class="cd-marker item-1"></span>
+          <ul>
+            <li class="selected"><a href="#0"><div class="image-icon"><img src="{{ url_for('static', filename='template/img/home-icon.png') }}" alt=""></div><h6>HOŞGELDİNİZ</h6></a></li>
+            <li><a href="#0"><div class="image-icon"><img src="{{ url_for('static', filename='template/img/about-icon.png') }}" alt=""></div><h6>HAKKIMIZDA</h6></a></li>
+            <li><a href="#0"><div class="image-icon"><img src="{{ url_for('static', filename='template/img/products-icon.png') }}" alt=""></div><h6>ÜRÜNLERİMİZ</h6></a></li>
+            <li><a href="#0"><div class="image-icon"><img src="{{ url_for('static', filename='template/img/partners-icon.png') }}" alt=""></div><h6>İŞBİRLİKLERİMİZ</h6></a></li>
+            <li><a href="#contact"><div class="image-icon"><img src="{{ url_for('static', filename='template/img/contact-icon.png') }}" alt=""></div><h6>İLETİŞİM</h6></a></li>
+          </ul>
+        </nav> 
+      </div>
+
+      <ul class="cd-hero-slider">
+
+
+
+        <!-- HERO -->
+      <li class="selected">
+
+        <!-- Arka Plan Video: Sadece Hoşgeldiniz -->
+        <div class="hero-bg">
+          <video autoplay muted loop playsinline id="bg-video">
+            <source src="{{ url_for('static', filename='template/videos/background.mp4') }}" type="video/mp4">
+          </video>
+          <div class="video-overlay"></div>
+        </div>
+
+     <div class="heading">
+        <h1 class="animasyon-yukari gecikme-1">ZEKİOĞLU YAPI MARKET</h1>
+        <span class="animasyon-yukari gecikme-2">KALİTELİ ÜRÜNLERİN MERKEZİ</span>
+      </div>
+
+        <div class="cd-full-width first-slide">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="content first-content">
+                  <h5>Küçük tamiratlardan büyük inşaatlara: İhtiyacınız olan her alet ve malzeme bir tık uzağınızda.</h5>
+                  <div class="primary-button">
+                    <a id="discover-btn" href="#0">KEŞFEDİN</a>
+                  </div>
+                </div>
+              </div>
+            </div>                  
+          </div>
+        </div>
+      </li>
+
+
+
+        <!-- HAKKIMIZDA -->
+        <li>
+          <div class="heading">
+            <h1>HAKKIMIZDA</h1>
+            <span>FİRMAMIZ HAKKINDA DAHA FAZLA BİLGİ EDİNİN</span> 
+          </div>
+          <div class="cd-half-width second-slide">   
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content second-content">
+                    <div class="row">
+                      <div class="col-md-7 left-image">
+                        <img src="{{ url_for('static', filename='template/img/zekiogluresim.png') }}" 
+                          alt="Zekioğlu Yapı Market"
+                          class="slide-in-left"
+                          style="width: 685px; height: 316px; object-fit: contain; margin: 20px auto; display: block;">
+
+                      </div>
+                      <div class="col-md-5">
+                        <div class="right-about-text">
+                          <h4>BİZ KİMİZ?</h4>
+                          <p>
+                            Zekioğlu Yapı Market, 2014 yılında İzmir Menderes pazar yeri karşısında kurulmuştur.
+                            Kurulduğumuz günden bu yana boya, hırdavat, inşaat ve yapı malzemeleri alanında
+                            siz değerli müşterilerimize güvenilir, kaliteli ve uygun fiyatlı ürünler sunmaktayız.
+                            Her geçen yıl büyüyerek, sizlerin ihtiyaçlarına daha iyi yanıt verebilmek için ürün
+                            yelpazemizi genişlettik ve hizmet anlayışımızı sürekli geliştirdik.
+                            Müşteri memnuniyetini daima ön planda tutarak, yapı sektöründe fark yaratmaya devam ediyoruz.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-7">
+                        <div class="left-about-text">
+                          <h4>NE YAPIYORUZ?</h4>
+                          <p>
+                            Zekioğlu Yapı Market olarak, küçük tamiratlardan büyük inşaat projelerine kadar
+                            her ölçekte ihtiyacınıza yönelik ürün ve çözümler sunuyoruz.
+                            Boya, hırdavat, el aletleri, tesisat, elektrik ve yapı malzemeleri gibi geniş bir ürün
+                            yelpazesiyle hizmet veriyoruz. Amacımız; kaliteli ürünleri uygun fiyatlarla sunarak
+                            işinizi kolaylaştırmak ve zamandan tasarruf etmenizi sağlamaktır.
+                            Günden güne büyüyen yapımızla, profesyonel ve bireysel müşterilerimizin ihtiyaçlarını
+                            en hızlı şekilde karşılamak için çalışıyoruz.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-5 right-image">
+                        <img src="{{ url_for('static', filename='template/img/neyapiyoruz.jpg') }}"
+                              alt="Ne Yapıyoruz - Zekioğlu Yapı Market"
+                              class="slide-in-right work-img">
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>                  
+            </div>
+          </div>
+        </li>
+                <!-- ÜRÜNLERİMİZ -->
+                <li id="urunler">
+                  <div class="heading">
+                    <h1>ÜRÜNLERİMİZ</h1>
+                    <span>KALİTELİ ÜRÜNLERİ SİZİNLE BULUŞTURUYORUZ</span>
+                  </div>
+
+                  <div class="cd-half-width third-slide">
+                    <div class="container">
+                      <div class="content third-content">
+                        <h4 style="text-align:center;margin-bottom:30px;">Ürün Kategorilerimiz</h4>
+
+                        <div class="urun-grid">
+                          <!-- data-cat ile kategori anahtarı verdim -->
+                          <div class="urun-kutu" data-cat="boya">
+                            <img src="{{ url_for('static', filename='template/img/urunler/boya.jpg') }}" alt="Boya & Aksesuar">
+                            <h5>Boya & Aksesuar</h5>
+                            <a href="#" class="btn-urun">İncele</a>
+                          </div>
+
+                          <div class="urun-kutu" data-cat="alet">
+                            <img src="{{ url_for('static', filename='template/img/urunler/alet.jpg') }}" alt="El Aletleri">
+                            <h5>El Aletleri</h5>
+                            <a href="#" class="btn-urun">İncele</a>
+                          </div>
+
+                          <div class="urun-kutu" data-cat="elektrik">
+                            <img src="{{ url_for('static', filename='template/img/urunler/elektrik.jpg') }}" alt="Tesisat & Elektrik">
+                            <h5>Tesisat & Elektrik</h5>
+                            <a href="#" class="btn-urun">İncele</a>
+                          </div>
+
+                          <div class="urun-kutu" data-cat="hirdavat">
+                            <img src="{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}" alt="Hırdavat Malzemeleri">
+                            <h5>Hırdavat Malzemeleri</h5>
+                            <a href="#" class="btn-urun">İncele</a>
+                          </div>
+
+                          <div class="urun-kutu" data-cat="nalburiye">
+                            <img src="{{ url_for('static', filename='template/img/urunler/nalburiye.jpg') }}" alt="Nalburiye Malzemeleri">
+                            <h5>Nalburiye Malzemeleri</h5>
+                            <a href="#" class="btn-urun">İncele</a>
+                          </div>
+
+                          <div class="urun-kutu" data-cat="elektrikli">
+                            <img src="{{ url_for('static', filename='template/img/urunler/elektrikli.jpg') }}" alt="Elektrikli El Aletleri">
+                            <h5>Elektrikli El Aletleri</h5>
+                            <a href="#" class="btn-urun">İncele</a>
+                          </div>
+
+                          <div class="urun-kutu" data-cat="isguvenlik">
+                            <img src="{{ url_for('static', filename='template/img/urunler/isguvenlik.jpg') }}" alt="İş Güvenlik Malzemeleri">
+                            <h5>İş Güvenlik Malzemeleri</h5>
+                            <a href="#" class="btn-urun">İncele</a>
+                          </div>
+
+                          <div class="urun-kutu" data-cat="insaat">
+                            <img src="{{ url_for('static', filename='template/img/urunler/insaat.jpg') }}" alt="İnşaat Ekipmanları">
+                            <h5>İnşaat Ekipmanları</h5>
+                            <a href="#" class="btn-urun">İncele</a>
+                          </div>
+
+                          <div class="urun-kutu" data-cat="makine">
+                            <img src="{{ url_for('static', filename='template/img/urunler/makine.jpg') }}" alt="Makinalar">
+                            <h5>Makinalar</h5>
+                            <a href="#" class="btn-urun">İncele</a>
+                          </div>
+
+                          <div class="urun-kutu" data-cat="tesisat">
+                            <img src="{{ url_for('static', filename='template/img/urunler/tesisat.jpg') }}" alt="Tesisat Malzemeleri">
+                            <h5>Tesisat Malzemeleri</h5>
+                            <a href="#" class="btn-urun">İncele</a>
+                          </div>
+
+                          <div class="urun-kutu" data-cat="vitrifiye">
+                            <img src="{{ url_for('static', filename='template/img/urunler/vitrifiye.jpg') }}" alt="Vitrifiye">
+                            <h5>Vitrifiye</h5>
+                            <a href="#" class="btn-urun">İncele</a>
+                          </div>
+
+                          <div class="urun-kutu" data-cat="dogalgaz">
+                            <img src="{{ url_for('static', filename='template/img/urunler/dogalgaz.jpg') }}" alt="Mekanik Tesisat & Doğalgaz Ekipmanları">
+                            <h5>Mekanik Tesisat & Doğalgaz Ekipmanları</h5>
+                            <a href="#" class="btn-urun">İncele</a>
+                          </div>
+                        </div>
+
+                        <!-- Popup Galeri -->
+                        <div id="galleryPopup" class="gallery-popup" aria-hidden="true">
+                          <div class="gallery-inner">
+                            <button class="gallery-close" aria-label="Kapat">×</button>
+                            <div id="galleryContent" class="gallery-grid"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+
+        <!-- İŞBİRLİKLERİMİZ -->
+        <li>
+          <div class="heading">
+            <h1>İŞBİRLİKLERİMİZ</h1>
+            <span>FİRMALARIMIZ</span>
+          </div>
+
+          <div class="cd-half-width fourth-slide">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content fourth-content">
+                    <div class="row">
+                      {% for i in range(1,7) %}
+                      <div class="col-xs-12 col-sm-6 col-md-4 project-item">
+                        <a class="brand-box"
+                            href="{{ url_for('static', filename='template/img/item-0' ~ i ~ '.png') }}"
+                            data-lightbox="image-1">
+                            <img class="brand-img"
+                                src="{{ url_for('static', filename='template/img/project-item-0' ~ i ~ '.png') }}"
+                                alt="İşbirliği Logosu {{ i }}">
+                        </a>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- İLETİŞİM -->
+        <li id="contact">
+          <div class="heading">
+            <h1>İLETİŞİM</h1>
+            <span>Bize yol tarifi alın, arayın ya da e-posta gönderin</span>
+          </div>
+
+          <div class="cd-half-width fivth-slide">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content fivth-content">
+                    <div class="row">
+
+                      <!-- SOL: Harita + Sosyal -->
+                      <div class="col-md-6">
+                        <div class="embed-responsive embed-responsive-16by9" style="border-radius:12px; overflow:hidden;">
+                          <iframe
+                            class="embed-responsive-item"
+                            src="https://www.google.com/maps?q=Zekio%C4%9Flu%20%C4%B0n%C5%9Faat%20%26%20Yap%C4%B1%20Market%20Menderes&output=embed"
+                            style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                        <div class="mt-3">
+                          <a class="btn btn-primary"
+                            target="_blank" rel="noopener"
+                            href="https://www.google.com/maps/dir/?api=1&destination=Zekio%C4%9Flu%20%C4%B0n%C5%9Faat%20%26%20Yap%C4%B1%20Market%20Menderes">
+                            Google Haritalar’da Yol Tarifi
+                          </a>
+                        </div>
+                        
+                  
+
+                        <!-- Sosyal: haritanın ALTINA alındı -->
+                        <div class="left-info mt-4">
+                          <ul class="social-icons">
+                            <p>Bizi Sosyal Medyada Takip Edin:</p>
+                            <i>
+                              <a href="https://www.instagram.com/zekiogluyapimarket/" target="_blank" rel="noopener">
+                                <i class="fa fa-instagram"></i>
+                              </a>
+                            </i>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- SAĞ: Adres/Telefon/E-posta -->
+                      <div class="col-md-6">
+                        <div class="row">
+
+                          <!-- Adres -->
+                          <div class="col-sm-12 mb-3">
+                            <div class="panel panel-default">
+                              <div class="panel-body">
+                                <h4 class="mb-2"><i class="fa fa-map-marker"></i> Adres</h4>
+                                <p class="mb-0">
+                                  İzmir / Menderes — Pazar Yeri Karşısı<br>
+                                  <a target="_blank" rel="noopener"
+                                    href="https://www.google.com/maps/search/?api=1&query=Zekio%C4%9Flu%20%C4%B0n%C5%9Faat%20%26%20Yap%C4%B1%20Market%20Menderes">
+                                    Haritada aç
+                                  </a>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <!-- Telefon -->
+                          <div class="col-sm-12 mb-3">
+                            <div class="panel panel-default">
+                              <div class="panel-body">
+                                <h4 class="mb-2"><i class="fa fa-phone"></i> Telefon</h4>
+
+                                <p class="mb-1" style="font-size:15px">
+                                  <a href="tel:+905551112233">+90 (539) 669 83 10</a> <span class="text-muted"></span><br>
+                                  <a href="tel:+905551112233">+90 (532) 440 43 54</a> <span class="text-muted"></span><br>
+                                  <a href="tel:+902324445566">+90 (232) 782 24 21</a> <span class="text-muted"></span>
+                                </p>
+
+                                <div class="btn-group" role="group" aria-label="Telefon Aksiyonları">
+                                  <a class="btn btn-primary" href="tel:+902327822421">Hemen Ara</a> 
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- E-posta -->
+                          <div class="col-sm-12">
+                            <div class="panel panel-default">
+                              <div class="panel-body">
+                                <h4 class="mb-3"><i class="fa fa-envelope"></i> E-posta</h4>
+
+                                <!-- 1️⃣ Gmail -->
+                                <a class="btn btn-success" target="_blank" rel="noopener"
+                                  href="https://mail.google.com/mail/?view=cm&fs=1&to=Zekiogluyapimarket%40hotmail.com&su=Zekio%C4%9Flu%20Yap%C4%B1%20Market%20-%20%C4%B0leti%C5%9Fim&body=Merhaba%20Zekio%C4%9Flu%2C%0A%0A%C4%B0smim%3A%20%0ATelefon%3A%20%0AKonu%3A%20%0A%0AMesaj%C4%B1m%3A%0A">
+                                  Gmail ile yaz
+                                </a>
+
+                                <!-- 2️⃣ Outlook / Hotmail -->
+                                <a class="btn btn-info" target="_blank" rel="noopener"
+                                  href="https://outlook.live.com/owa/?path=/mail/action/compose&to=Zekiogluyapimarket%40hotmail.com&subject=Zekio%C4%9Flu%20Yap%C4%B1%20Market%20-%20%C4%B0leti%C5%9Fim&body=Merhaba%20Zekio%C4%9Flu%2C%0A%0A%C4%B0smim%3A%20%0ATelefon%3A%20%0AKonu%3A%20%0A%0AMesaj%C4%B1m%3A%0A">
+                                  Outlook / Hotmail ile yaz
+                                </a>
+
+                                <!-- 3️⃣ Varsayılan Mail (bilgisayardaki mail uygulaması açılır) -->
+                                <a class="btn btn-default"
+                                  href="mailto:Zekiogluyapimarket@hotmail.com?subject=Zekio%C4%9Flu%20Yap%C4%B1%20Market%20-%20%C4%B0leti%C5%9Fim&body=Merhaba%20Zekio%C4%9Flu%2C%0A%0A%C4%B0smim%3A%20%0ATelefon%3A%20%0AKonu%3A%20%0A%0AMesaj%C4%B1m%3A%0A">
+                                  Varsayılan Mail Uygulaması
+                                </a>
+
+                                <p class="mt-2 mb-0">
+                                  E-posta: <a href="mailto:Zekiogluyapimarket@hotmail.com">Zekiogluyapimarket@hotmail.com</a>
+                                </p>
+                                <p class="text-muted" style="font-size:12px; margin-top:8px;">
+                                  Not: Gmail veya Outlook oturumun açıksa direkt e-posta oluşturma sayfası açılır; değilse mail uygulamasına yönlendirilir.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+</div>
+                        </div>
+                      </div> </div> </div> <div class="row" style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px;">
+                    <div class="col-md-12">
+                        <h4 style="text-align: center; margin-bottom: 25px; font-weight: bold;">
+                            Bize Hemen Mesaj Gönderin
+                        </h4>
+                    </div>
+
+                    <form id="contact" action="/" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <input name="name" type="text" class="form-control" id="name" placeholder="Adınız Soyadınız" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <input name="email" type="email" class="form-control" id="email" placeholder="E-posta Adresiniz" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Mesajınız..." required></textarea>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="btn btn-primary" style="width: 100%;">Mesajı Gönder</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+
+                        </div> <!-- /.row -->
+                      </div> <!-- /.col-md-6 -->
+
+                    </div> <!-- /.row -->
+                  </div> <!-- /.content -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+      </ul>
+    </section>
+
+    <footer>
+      <p>Copyright &copy; 2025 Zekioğlu Yapı Market | Designed by <em>Büşra ÇİÇEK</em></p>
+    </footer>
+
+    <!-- JS: Doğru sıra -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+      window.jQuery || document.write('<script src="{{ url_for("static", filename="template/js/vendor/jquery-1.11.2.min.js") }}"><\\/script>')
+    </script>
+    <script src="{{ url_for('static', filename='template/js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='template/js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='template/js/main.js') }}"></script>
+
+    
+    <script>
+  // "ÜRÜNLERİMİZ" nav öğesi, menüde 3. sırada → index 2 (0'dan başlar)
+  document.getElementById('discover-btn').addEventListener('click', function (e) {
+    e.preventDefault();
+    var navLinks = document.querySelectorAll('.cd-slider-nav li a');
+    if (navLinks && navLinks[2]) {
+      navLinks[2].click(); // ÜRÜNLERİMİZ slaytına geç
+    } else {
+      // Yedek: doğrudan bölüm varsa kaydır
+      var target = document.querySelector('#urunler');
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const SELECTOR = ".slide-in-left, .slide-in-right";
+  const slides = document.querySelectorAll(".cd-hero-slider > li");
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      } else {
+        entry.target.classList.remove("show");
+      }
+    });
+  }, { threshold: 0.25 });
+
+  function observeTargets(scope = document) {
+    scope.querySelectorAll(SELECTOR).forEach(el => {
+      // Görsel tam yüklenmeden animasyon başlamasın
+      if (el.complete || el.tagName !== "IMG") {
+        io.observe(el);
+      } else {
+        el.addEventListener("load", () => io.observe(el));
+      }
+    });
+  }
+
+  function resetSlideAnimations(slide) {
+    const els = slide.querySelectorAll(SELECTOR);
+    els.forEach(el => {
+      el.classList.remove("show");
+      el.style.transition = "none";
+      io.unobserve(el);
+    });
+    requestAnimationFrame(() => {
+      els.forEach(el => el.style.transition = "");
+      setTimeout(() => els.forEach(el => io.observe(el)), 100);
+    });
+  }
+
+  const mo = new MutationObserver(mutations => {
+    mutations.forEach(m => {
+      if (m.attributeName === "class" && m.target.classList.contains("selected")) {
+        setTimeout(() => resetSlideAnimations(m.target), 650);
+      }
+    });
+  });
+  slides.forEach(li => mo.observe(li, { attributes: true }));
+
+  document.querySelectorAll(".cd-slider-nav a").forEach(a => {
+    a.addEventListener("click", () => {
+      setTimeout(() => {
+        const active = document.querySelector(".cd-hero-slider li.selected");
+        if (active) resetSlideAnimations(active);
+      }, 650);
+    });
+  });
+
+  observeTargets();
+});
+</script>
+
+<a href="https://wa.me/905396698310?text=Merhaba,%20Zekioğlu%20Yapı%20Market%20hakkında%20bilgi%20almak%20istiyorum." 
+   class="whatsapp-btn" 
+   target="_blank" 
+   title="Bize WhatsApp'tan Yazın">
+    <i class="fa fa-whatsapp"></i>
+</a>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script>
+    // Animasyon Ayarları
+    ScrollReveal().reveal('.heading', { 
+        delay: 200, 
+        distance: '50px', 
+        origin: 'top', 
+        duration: 1000 
+    });
+
+    ScrollReveal().reveal('.left-image', { 
+        delay: 300, 
+        distance: '100px', 
+        origin: 'left', 
+        duration: 1000 
+    });
+
+    ScrollReveal().reveal('.right-image', { 
+        delay: 300, 
+        distance: '100px', 
+        origin: 'right', 
+        duration: 1000 
+    });
+
+    ScrollReveal().reveal('.project-item', { 
+        delay: 200, 
+        interval: 200, // Her bir ürün sırayla 200ms arayla gelir
+        distance: '50px', 
+        origin: 'bottom',
+        duration: 800
+    });
+    
+    ScrollReveal().reveal('.urun-kutu', { 
+        delay: 200, 
+        interval: 150, 
+        distance: '30px', 
+        origin: 'bottom' 
+    });
+
+    // Sayfa tamamen yüklendiğinde preloader'ı kaldır
+    window.addEventListener('load', function() {
+        var preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0'; // Yavaşça solsun
+        setTimeout(function(){
+            preloader.style.display = 'none'; // Sonra tamamen yok olsun
+        }, 500);
+    });
+</script>
+
+  </body>
+</html>
+
+
+

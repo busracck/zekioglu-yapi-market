@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Yönetim Paneli | Zekioğlu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body { background-color: #f4f4f4; padding: 40px; }
+        .kutu { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+        h2 { color: #040244; border-bottom: 2px solid #ffbb05; padding-bottom: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="kutu">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>📩 Gelen Müşteri Mesajları</h2>
+            <a href="/" class="btn btn-warning">Siteye Dön</a>
+        </div>
+
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">İsim Soyisim</th>
+                    <th scope="col">E-posta</th>
+                    <th scope="col">Mesaj</th>
+                    <th scope="col" style="width: 100px;">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mesaj in mesajlar %}
+                <tr>
+                    <th scope="row">{{ mesaj.id }}</th>
+                    <td>{{ mesaj.ad_soyad }}</td>
+                    <td><a href="mailto:{{ mesaj.email }}">{{ mesaj.email }}</a></td>
+                    <td>{{ mesaj.mesaj }}</td>
+                    
+                    <td>
+                        <a href="/mesaj-sil/{{ mesaj.id }}" 
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Bu mesajı silmek istediğinize emin misiniz?');">
+                           Sil 🗑️
+                        </a>
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        {% if not mesajlar %}
+            <div class="alert alert-info">Henüz hiç mesaj gelmemiş.</div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
