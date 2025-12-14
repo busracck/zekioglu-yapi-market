@@ -1511,3 +1511,83 @@ body.lb-disable-scrolling {
     width: 90%;
   }
 }
+
+@media (max-width: 768px) {
+  .icon {
+    color: #FFD700 !important;
+  }
+}
+
+.about-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* ortalamak için */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap; /* taşmayı önler */
+  gap: 16px;
+  justify-content: center;
+}
+
+.container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* ===== EK MOBİL DÜZENLEMELER ===== */
+@media (max-width: 768px) {
+  /* İkon renkleri */
+  .icon, .cd-slider-nav .image-icon, .primary-button a i {
+    color: #ffbb05 !important; /* sarı */
+    background-color: transparent !important;
+  }
+
+  /* Hakkımızda ve diğer görseller */
+  .about-image, .right-image img, .first-content img, .second-slide img, .third-content img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Ürün ve proje kutuları */
+  .product-grid a, .urun-kutu, .project-item {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Grid düzeni */
+  .container, .grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .grid img, .container img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Slider nav boyutları ve hizalama */
+  .cd-slider-nav {
+    background-color: #ffbb05 !important;
+    height: 70px;
+    line-height: 70px;
+  }
+
+  .cd-slider-nav ul li {
+    margin: 0 8px;
+  }
+
+  .cd-slider-nav ul li h6 {
+    display: none;
+  }
+}
