@@ -1216,10 +1216,15 @@ body.lb-disable-scrolling {
 
 /* ==== ÜRÜN KATEGORİLERİ ==== */
 .urun-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 25px;
-  padding: 10px;
+    display: grid;
+    /* Kesinlikle 4 tane yan yana olsun (Oto sığdırma yapma) */
+    grid-template-columns: repeat(4, 1fr) !important; 
+    gap: 30px;
+    padding: 20px;
+    
+    /* Izgara çok yayılmasın, ortada derli toplu dursun */
+    max-width: 1200px; 
+    margin: 0 auto; /* Ortala */
 }
 .urun-kutu {
   background: #fff;
@@ -1319,47 +1324,116 @@ body.lb-disable-scrolling {
   transform: scale(1.05);
 }
 
-/* --- Ürün popup --- */
-.gallery-popup{
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,.6);
-  display: none;                /* JS ile flex yapılacak */
-  align-items: center; justify-content: center;
-  padding: 24px;
-  z-index: 9999;
-}
-.gallery-inner{
-  width: min(1100px, 95vw);
-  max-height: 90vh; overflow: auto;
-  background: #fff; border-radius: 14px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.25);
-  padding: 18px 18px 22px;
-}
-.gallery-close{
-  position: sticky; top: 0; float: right;
-  border: 0; background: transparent;
-  font-size: 28px; line-height: 1; cursor: pointer;
-  padding: 4px 8px; margin: -6px -6px 8px 0;
-}
-.gallery-grid{
-  display: grid; gap: 12px;
-  grid-template-columns: repeat(3, 1fr);
-}
-.gallery-grid img{
-  width: 100%; height: auto; display: block;
-  border-radius: 8px;
-  /* NETLİK: upscaling’i azaltmak için */
-  image-rendering: auto;
+/* --- GÜNCELLENMİŞ POPUP CSS --- */
+.gallery-popup {
+    display: none; /* JS ile açılacak */
+    position: fixed !important; /* Kesinlikle sabit */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999; /* En en üstte olsun */
+    background-color: rgba(0, 0, 0, 0.85); /* Arka plan koyuluğu */
+    backdrop-filter: blur(4px); /* Arkası bulanık olsun */
+    
+    /* İçeriği tam ortalamak için: */
+    align-items: center;
+    justify-content: center;
 }
 
-/* Tablet ve mobil kırılımlar */
-@media (max-width: 992px){ .gallery-grid{ grid-template-columns: repeat(2,1fr);} }
-@media (max-width: 576px){ .gallery-grid{ grid-template-columns: 1fr; } }
+.gallery-inner {
+    position: relative;
+    background: #fff;
+    width: 90%;
+    max-width: 600px; /* Çok geniş olmasın */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    animation: popupAcil 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Tatlı bir yaylanma efekti */
+}
 
-/* Kart görselleri: aynı yükseklik istiyorsan (küçük kutular) */
-.urun-kutu img{
-  width: 100%; height: 220px; object-fit: cover;
-  border-radius: 10px;
+.gallery-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    line-height: 20px;
+    transition: color 0.2s;
+}
+
+.gallery-close:hover {
+    color: #d9534f; /* Kapatırken kırmızı olsun */
+}
+
+/* Ürünlerin dizilişi */
+.gallery-grid {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap; /* Mobilde sığmazsa aşağı geçsin */
+}
+
+/* Tekil Ürün Kutusu */
+.mini-urun-item {
+    width: 30%; /* Yan yana 3 tane sığsın */
+    min-width: 140px; /* Çok küçülmesin */
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+
+.mini-urun-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.mini-urun-item h6 {
+    font-size: 13px;
+    font-weight: 700;
+    margin: 5px 0;
+    color: #040244;
+}
+
+/* Laptop ekranı (Hafif küçülünce 3'e düşsün - 4 satır olur) */
+@media (max-width: 1200px) {
+    .urun-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* Tablet (2'ye düşsün - 6 satır olur) */
+@media (max-width: 991px) {
+    .urun-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Telefon (Tek sıra) */
+@media (max-width: 600px) {
+    .urun-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+    .mini-urun-item img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 0;
+    }
+
+    
+
+@keyframes popupAcil {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 /* --- WhatsApp Butonu Tasarımı --- */
@@ -1501,21 +1575,36 @@ body.lb-disable-scrolling {
   max-width: 300px;
 }
 
+/* --- Mobil Uyumluluk --- */
 @media (max-width: 768px) {
-  .products {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .product-item {
-    width: 90%;
-  }
+    .gallery-grid {
+        /* Mobilde de yan yana sığsın istersen 2 yapabiliriz, 
+           ama 3 tane net görünsün dediğin için mobilde 1 veya 2 daha iyi olur.
+           Eğer mobilde de 3 tane minik olsun istersen burayı elleme.
+           Okunabilir olması için mobilde alt alta olması daha iyidir: */
+        grid-template-columns: repeat(1, 1fr); 
+        max-height: 60vh; /* Mobilde çok uzamasın, içi kaydırılabilir olsun */
+        overflow-y: auto;
+    }
+    
+    .mini-urun-item {
+        display: flex; /* Resmi ve yazıyı yan yana alalım mobilde */
+        align-items: center;
+        text-align: left;
+        gap: 10px;
+    }
+    
+    .mini-urun-item img {
+        width: 80px; /* Mobilde resim küçük olsun */
+        height: 80px;
+        margin-bottom: 0;
+    }
 }
 
-@media (max-width: 768px) {
-  .icon {
-    color: #FFD700 !important;
-  }
+/* Açılış Animasyonu */
+@keyframes zoomAcil {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
 }
 
 .about-image {
@@ -1589,5 +1678,70 @@ body.lb-disable-scrolling {
 
   .cd-slider-nav ul li h6 {
     display: none;
+  }
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap; /* Elemanlar taşarsa alt satıra geçer */
+  justify-content: space-between; /* Aralarında boşluk bırakır */
+  align-items: center;
+}
+
+.navbar a {
+  padding: 5px 10px; 
+  font-size: 14px; /* Küçük ekran için küçült */
+}
+
+@media (max-width: 768px) {
+  .navbar a {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Ürünler arası boşluk */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.product-card {
+  width: 100%; /* Mobilde tam genişlik */
+  margin-bottom: 20px; /* Kartlar arası boşluk */
+  box-sizing: border-box;
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Tablet ve üstü: 3 ürün yan yana */
+@media (max-width: 768px) {
+  .urun-kutu img,
+  .product-grid img {
+    height: auto;       /* Yükseklik otomatik */
+    max-height: 220px;  /* Opsiyonel: max sınır */
+    width: 100%;
+  }
+}
+
+.urun-kutu {
+  margin-top: 0;     /* Kart üst boşluğu sıfırla */
+}
+.product-grid a {
+  margin-top: 0;     /* Kart üst boşluğu sıfırla */
+}
+
+@media (max-width: 768px) {
+  .slide-in-left, .slide-in-right {
+    transform: translateX(0) !important; /* Sadece yatay kaydır */
+    opacity: 1 !important;
   }
 }

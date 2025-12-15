@@ -161,7 +161,7 @@
                     <span>KALİTELİ ÜRÜNLERİ SİZİNLE BULUŞTURUYORUZ</span>
                   </div>
 
-                  <div class="cd-half-width third-slide">
+                  <div class="cd-full-width third-slide">
                     <div class="container">
                       <div class="content third-content">
                         <h4 style="text-align:center;margin-bottom:30px;">Ürün Kategorilerimiz</h4>
@@ -240,18 +240,6 @@
                             <a href="#" class="btn-urun">İncele</a>
                           </div>
                         </div>
-
-                        <!-- Popup Galeri -->
-                        <div id="galleryPopup" class="gallery-popup" aria-hidden="true">
-                          <div class="gallery-inner">
-                            <button class="gallery-close" aria-label="Kapat">×</button>
-                            <div id="galleryContent" class="gallery-grid"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
 
 
 
@@ -604,6 +592,360 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 500);
     });
 </script>
+
+
+<div id="gucluPopup">
+    <div class="guclu-inner">
+        <span class="guclu-close">&times;</span>
+        <h3 id="popupBaslik" class="guclu-title">Ürünler</h3>
+        <div id="popupIcerik" class="guclu-grid"></div>
+    </div>
+</div>
+
+<div id="buyukResimPopup">
+    <span class="buyuk-kapat">&times;</span>
+    <img id="buyukResimImg" src="" alt="Büyük Resim">
+    <p style="color:#fff; margin-top:10px;">Kapatmak için boşluğa tıklayın</p>
+</div>
+
+<script>
+    // Global Fonksiyon: Resmi Büyüt
+    function resmiBuyut(resimYolu) {
+        const buyukPopup = document.getElementById('buyukResimPopup');
+        const buyukImg = document.getElementById('buyukResimImg');
+        
+        buyukImg.src = resimYolu;
+        buyukPopup.style.display = 'flex';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // ÜRÜN VERİLERİ (Senin yollarına göre ayarlı)
+        const urunData = {
+            'boya': [
+                { img: "{{ url_for('static', filename='template/img/boya/01.jpg') }}", name: 'İç Cephe Boyası' },
+                { img: "{{ url_for('static', filename='template/img/boya/02.jpg') }}", name: 'Tavan Boyası' },
+                { img: "{{ url_for('static', filename='template/img/boya/03.jpg') }}", name: 'Dış Cephe Astarı' }
+            ],
+            'alet': [
+                { img: "{{ url_for('static', filename='template/img/urunler/alet.jpg') }}", name: 'Çekiç' },
+                { img: "{{ url_for('static', filename='template/img/urunler/alet.jpg') }}", name: 'Tornavida Seti' },
+                { img: "{{ url_for('static', filename='template/img/urunler/alet.jpg') }}", name: 'Pense' }
+            ],
+            'hirdavat': [
+                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}", name: 'Vida Seti' },
+                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}", name: 'Menteşe' },
+                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}", name: 'Kilit' }
+            ],
+            'default': [
+                { img: "{{ url_for('static', filename='template/img/urunler/boya.jpg') }}", name: 'Örnek Ürün 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/alet.jpg') }}", name: 'Örnek Ürün 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}", name: 'Örnek Ürün 3' }
+            ]
+        };
+
+        const popup = document.getElementById('gucluPopup');
+        const icerik = document.getElementById('popupIcerik');
+        const baslik = document.getElementById('popupBaslik');
+        const kapat = document.querySelector('.guclu-close');
+        
+        const buyukPopup = document.getElementById('buyukResimPopup');
+        const buyukKapat = document.querySelector('.buyuk-kapat');
+
+        // 1. Kategoriyi Açma Olayı
+        document.addEventListener('click', function(e) {
+            const kutu = e.target.closest('.urun-kutu');
+            if (kutu) {
+                if(e.target.tagName === 'A') e.preventDefault();
+
+                const kat = kutu.getAttribute('data-cat');
+                const isim = kutu.querySelector('h5').innerText;
+                const urunler = urunData[kat] || urunData['default'];
+
+                baslik.innerText = isim + " Seçenekleri";
+                icerik.innerHTML = '';
+
+                urunler.forEach(u => {
+                    // HEM BUTONA HEM RESME onclick EKLEDİK
+                    icerik.innerHTML += `
+                        <div class="guclu-item" onclick="resmiBuyut('${u.img}')">
+                            <img src="${u.img}">
+                            <div>
+                                <h4>${u.name}</h4>
+                                <button class="btn btn-warning btn-sm">Büyüt</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                popup.style.display = 'flex';
+            }
+        });
+
+        // Kapatma İşlemleri (Popup 1)
+        kapat.addEventListener('click', () => popup.style.display = 'none');
+        popup.addEventListener('click', (e) => { if(e.target === popup) popup.style.display = 'none'; });
+
+        // Kapatma İşlemleri (Büyük Resim Popup 2)
+        buyukKapat.addEventListener('click', () => buyukPopup.style.display = 'none');
+        buyukPopup.addEventListener('click', () => buyukPopup.style.display = 'none'); // Boşluğa basınca kapat
+    });
+</script>
+
+<style>
+    /* 1. KATMAN: Ürün Listesi Popup'ı */
+    #gucluPopup {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 2000; /* Slider'ın üstünde */
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(4px);
+        align-items: center; justify-content: center;
+    }
+
+    .guclu-inner {
+        position: relative;
+        background-color: #fff;
+        width: 90%; max-width: 850px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 40px rgba(255, 187, 5, 0.5);
+        text-align: center;
+        /* Görünürlük ayarları */
+        opacity: 1 !important; visibility: visible !important; transform: none !important;
+    }
+
+    .guclu-close {
+        position: absolute; top: 10px; right: 20px;
+        font-size: 35px; color: #333; cursor: pointer; line-height: 35px; font-weight: bold;
+    }
+    .guclu-close:hover { color: red; }
+
+    .guclu-title {
+        color: #040244; font-family: sans-serif; font-size: 22px; font-weight: bold;
+        margin-bottom: 20px; border-bottom: 3px solid #ffbb05;
+        display: inline-block; padding-bottom: 5px; text-transform: uppercase;
+    }
+
+    .guclu-grid {
+        display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
+    }
+
+    .guclu-item {
+        background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px;
+        width: 30%; min-width: 150px; padding: 10px;
+        transition: all 0.2s; cursor: pointer;
+    }
+    .guclu-item:hover { transform: translateY(-3px); border-color: #ffbb05; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+    .guclu-item img {
+        width: 100%; height: 140px; object-fit: cover;
+        border-radius: 5px; margin-bottom: 10px; pointer-events: none; /* Tıklamayı div'e geçir */
+    }
+
+    .guclu-item h4 {
+        font-size: 14px; font-weight: 700; color: #333; margin-bottom: 8px; pointer-events: none;
+    }
+
+    .guclu-btn {
+        background-color: #ffbb05; color: #000; border: none;
+        padding: 5px 15px; font-size: 12px; font-weight: bold; border-radius: 4px; pointer-events: none;
+    }
+
+    /* 2. KATMAN: Tam Ekran Resim (Zoom) */
+    #buyukResimPopup {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 999999999; /* EN TEPEDE */
+        background-color: rgba(0,0,0,0.95);
+        align-items: center; justify-content: center;
+        flex-direction: column;
+    }
+
+    #buyukResimImg {
+        max-width: 90%; max-height: 85vh;
+        border: 4px solid #fff; border-radius: 4px;
+        box-shadow: 0 0 50px rgba(0,0,0,1);
+        animation: zoomAcil 0.25s ease-out;
+    }
+
+    .buyuk-kapat-yazi {
+        color: #fff; margin-top: 15px; font-size: 16px; font-weight: 300;
+        background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px;
+    }
+
+    @keyframes zoomAcil { from {transform: scale(0.6); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+    
+    @media (max-width: 768px) {
+        .guclu-item { width: 100%; display: flex; align-items: center; text-align: left; gap: 15px; }
+        .guclu-item img { width: 80px; height: 80px; margin-bottom: 0; }
+    }
+    /* --- MOBİL MENÜ DÜZELTME (NAVBAR) --- */
+@media (max-width: 850px) {
+    /* 1. Kapsayıcıyı Esnek Yap */
+    .cd-slider-nav {
+        height: 70px !important; /* Yüksekliği sabitle */
+        display: flex !important;
+        align-items: center !important; /* Dikey ortala */
+    }
+
+    /* 2. Listeyi Yatayda Eşit Dağıt */
+    .cd-slider-nav nav, 
+    .cd-slider-nav ul {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-evenly !important; /* Aralarına eşit boşluk koy */
+        align-items: center !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 3. Her İkon Kutusu */
+    .cd-slider-nav ul li {
+        margin: 0 !important; /* Eski sıkıştıran boşlukları sil */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    /* 4. İkonun Kendisi */
+    .cd-slider-nav .image-icon {
+        width: 40px !important; /* Tıklanabilir alan genişliği */
+        height: 40px !important;
+        line-height: 40px !important;
+        background-color: transparent !important; /* Arka planı temizle */
+        border-radius: 50%;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* İkon Resmi */
+    .cd-slider-nav .image-icon img {
+        width: 24px !important; /* İkon boyutu */
+        height: auto !important;
+        margin: 0 !important;
+        filter: brightness(0.2); /* Siyah görünmesi için */
+    }
+
+    /* Seçili İkon (Aktif Olan) */
+    .cd-slider-nav ul li.selected .image-icon {
+        background-color: rgba(255, 255, 255, 0.3) !important; /* Seçili olana hafif beyaz fon */
+    }
+
+    /* Kaybolan sarı çizgiyi (marker) mobilde gizle, kafa karıştırmasın */
+    .cd-marker {
+        display: none !important;
+    }
+}
+</style>
+
+
+
+
+<div id="gucluPopup">
+    <div class="guclu-inner">
+        <span class="guclu-close">&times;</span>
+        <h3 id="popupBaslik" class="guclu-title">Ürünler</h3>
+        <div id="popupIcerik" class="guclu-grid"></div>
+    </div>
+</div>
+
+<div id="buyukResimPopup">
+    <img id="buyukResimImg" src="" alt="Büyük Görünüm">
+    <div class="buyuk-kapat-yazi">Kapatmak için ekrana tıklayın</div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 1. ÖNCE ESKİ KALINTILARI TEMİZLE (Çakışma Önleyici)
+        const eskiPopup = document.querySelectorAll('#galleryPopup, .gallery-popup');
+        eskiPopup.forEach(el => el.remove());
+
+        // 2. VERİLER
+        const urunData = {
+            'boya': [
+                { img: "{{ url_for('static', filename='template/img/urunler/boya/01.jpg') }}", name: 'Silikonlu İç Cephe Boyası' },
+                { img: "{{ url_for('static', filename='template/img/urunler/boya/02.jpg') }}", name: 'Tavan Boyası' },
+                { img: "{{ url_for('static', filename='template/img/urunler/boya/03.jpg') }}", name: 'Dış Cephe Astarı' }
+            ],
+            'alet': [
+                { img: "{{ url_for('static', filename='template/img/urunler/alet.jpg') }}", name: 'Profesyonel Çekiç' },
+                { img: "{{ url_for('static', filename='template/img/urunler/alet.jpg') }}", name: 'Tornavida Seti' },
+                { img: "{{ url_for('static', filename='template/img/urunler/alet.jpg') }}", name: 'Pense' }
+            ],
+            'hirdavat': [
+                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}", name: 'Vida Seti' },
+                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}", name: 'Menteşe' },
+                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}", name: 'Kilit Sistemleri' }
+            ],
+            'default': [
+                { img: "{{ url_for('static', filename='template/img/urunler/boya.jpg') }}", name: 'Örnek Ürün A' },
+                { img: "{{ url_for('static', filename='template/img/urunler/alet.jpg') }}", name: 'Örnek Ürün B' },
+                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}", name: 'Örnek Ürün C' }
+            ]
+        };
+
+        // Elementleri Seç
+        const mainPopup = document.getElementById('gucluPopup');
+        const icerik = document.getElementById('popupIcerik');
+        const baslik = document.getElementById('popupBaslik');
+        const kapatBtn = document.querySelector('.guclu-close');
+        
+        const zoomPopup = document.getElementById('buyukResimPopup');
+        const zoomImg = document.getElementById('buyukResimImg');
+
+        // FONKSİYON: Ana Popup'ı Aç
+        document.addEventListener('click', function(e) {
+            // "İncele" butonuna veya kutusuna tıklandı mı?
+            const kutu = e.target.closest('.urun-kutu');
+            if (kutu) {
+                if(e.target.tagName === 'A') e.preventDefault();
+
+                const kat = kutu.getAttribute('data-cat');
+                const isim = kutu.querySelector('h5').innerText;
+                const data = urunData[kat] || urunData['default'];
+
+                // İçeriği doldur
+                baslik.innerText = isim;
+                icerik.innerHTML = '';
+                
+                data.forEach(u => {
+                    // Her ürüne data-src özelliği ekliyoruz
+                    const div = document.createElement('div');
+                    div.className = 'guclu-item';
+                    div.setAttribute('data-src', u.img); // Resim yolunu sakla
+                    div.innerHTML = `
+                        <img src="${u.img}">
+                        <h4>${u.name}</h4>
+                        <span class="guclu-btn">İNCELE</span>
+                    `;
+                    // Tıklanınca Zoom Fonksiyonunu Çağır
+                    div.addEventListener('click', function() {
+                        const src = this.getAttribute('data-src');
+                        zoomImg.src = src;
+                        zoomPopup.style.display = 'flex';
+                    });
+
+                    icerik.appendChild(div);
+                });
+
+                mainPopup.style.display = 'flex';
+            }
+        });
+
+        // KAPATMA İŞLEMLERİ
+        kapatBtn.addEventListener('click', () => { mainPopup.style.display = 'none'; });
+        mainPopup.addEventListener('click', (e) => { if(e.target === mainPopup) mainPopup.style.display = 'none'; });
+
+        // ZOOM KAPATMA
+        zoomPopup.addEventListener('click', () => { zoomPopup.style.display = 'none'; });
+    });
+</script>
+
 
   </body>
 </html>
