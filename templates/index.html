@@ -349,9 +349,9 @@
                                 <h4 class="mb-2"><i class="fa fa-phone"></i> Telefon</h4>
 
                                 <p class="mb-1" style="font-size:15px">
-                                  <a href="tel:+905551112233">+90 (539) 669 83 10</a> <span class="text-muted"></span><br>
-                                  <a href="tel:+905551112233">+90 (532) 440 43 54</a> <span class="text-muted"></span><br>
-                                  <a href="tel:+902324445566">+90 (232) 782 24 21</a> <span class="text-muted"></span>
+                                  <a href="tel:+905396698310">+90 (539) 669 83 10</a> <span class="text-muted"></span><br>
+                                  <a href="tel:+905324404354">+90 (532) 440 43 54</a> <span class="text-muted"></span><br>
+                                  <a href="tel:+902327822421">+90 (232) 782 24 21</a> <span class="text-muted"></span>
                                 </p>
 
                                 <div class="btn-group" role="group" aria-label="Telefon Aksiyonları">
@@ -698,7 +698,7 @@ document.addEventListener("DOMContentLoaded", function () {
         position: fixed;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        z-index: 2000; /* Slider'ın üstünde */
+        z-index: 2000;
         background-color: rgba(0, 0, 0, 0.9);
         backdrop-filter: blur(4px);
         align-items: center; justify-content: center;
@@ -707,50 +707,84 @@ document.addEventListener("DOMContentLoaded", function () {
     .guclu-inner {
         position: relative;
         background-color: #fff;
-        width: 90%; max-width: 850px;
-        padding: 25px;
+        width: 95%; 
+        max-width: 900px; /* Genişliği biraz artırdık ki 3-4 tane sığsın */
+        padding: 30px;
         border-radius: 12px;
         box-shadow: 0 0 40px rgba(255, 187, 5, 0.5);
         text-align: center;
-        /* Görünürlük ayarları */
         opacity: 1 !important; visibility: visible !important; transform: none !important;
+        
+        /* Çok uzun içerik olursa kaydırma çubuğu çıksın */
+        max-height: 90vh;
+        overflow-y: auto;
     }
 
     .guclu-close {
         position: absolute; top: 10px; right: 20px;
         font-size: 35px; color: #333; cursor: pointer; line-height: 35px; font-weight: bold;
+        z-index: 10;
     }
     .guclu-close:hover { color: red; }
 
     .guclu-title {
         color: #040244; font-family: sans-serif; font-size: 22px; font-weight: bold;
-        margin-bottom: 20px; border-bottom: 3px solid #ffbb05;
+        margin-bottom: 25px; border-bottom: 3px solid #ffbb05;
         display: inline-block; padding-bottom: 5px; text-transform: uppercase;
     }
 
     .guclu-grid {
-        display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
+        display: flex; 
+        justify-content: center; 
+        gap: 20px; 
+        flex-wrap: wrap;
     }
 
+    /* --- GÜNCELLENEN KISIM: 194x259px AYARI --- */
     .guclu-item {
-        background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px;
-        width: 30%; min-width: 150px; padding: 10px;
-        transition: all 0.2s; cursor: pointer;
+        background: #f9f9f9; 
+        border: 1px solid #ddd; 
+        border-radius: 8px;
+        
+        /* Kutunun genişliği resimle orantılı olsun */
+        width: 210px; 
+        padding: 10px;
+        
+        transition: all 0.2s; 
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-    .guclu-item:hover { transform: translateY(-3px); border-color: #ffbb05; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+    .guclu-item:hover { 
+        transform: translateY(-3px); 
+        border-color: #ffbb05; 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+    }
 
     .guclu-item img {
-        width: 100%; height: 140px; object-fit: cover;
-        border-radius: 5px; margin-bottom: 10px; pointer-events: none; /* Tıklamayı div'e geçir */
+        /* İSTEDİĞİN ÖLÇÜLER BURADA */
+        width: 100%; 
+        max-width: 194px; /* Genişlik sınırı */
+        height: 259px;    /* Yükseklik sabitleme */
+        
+        object-fit: cover; /* Resmi bozmadan çerçeveye sığdır */
+        border-radius: 5px; 
+        margin-bottom: 12px; 
+        pointer-events: none;
     }
+    /* ------------------------------------------- */
 
     .guclu-item h4 {
         font-size: 14px; font-weight: 700; color: #333; margin-bottom: 8px; pointer-events: none;
+        line-height: 1.3;
     }
 
     .guclu-btn {
         background-color: #ffbb05; color: #000; border: none;
-        padding: 5px 15px; font-size: 12px; font-weight: bold; border-radius: 4px; pointer-events: none;
+        padding: 6px 20px; font-size: 12px; font-weight: bold; border-radius: 4px; pointer-events: none;
+        margin-top: auto; /* Butonu en alta it */
     }
 
     /* 2. KATMAN: Tam Ekran Resim (Zoom) */
@@ -759,14 +793,15 @@ document.addEventListener("DOMContentLoaded", function () {
         position: fixed;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        z-index: 999999999; /* EN TEPEDE */
+        z-index: 999999999;
         background-color: rgba(0,0,0,0.95);
         align-items: center; justify-content: center;
         flex-direction: column;
     }
 
     #buyukResimImg {
-        max-width: 90%; max-height: 85vh;
+        max-width: 95%; 
+        max-height: 90vh; /* Ekran boyuna göre ayarla */
         border: 4px solid #fff; border-radius: 4px;
         box-shadow: 0 0 50px rgba(0,0,0,1);
         animation: zoomAcil 0.25s ease-out;
@@ -779,68 +814,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     @keyframes zoomAcil { from {transform: scale(0.6); opacity: 0;} to {transform: scale(1); opacity: 1;} }
     
+    /* Mobil Ayarı */
     @media (max-width: 768px) {
-        .guclu-item { width: 100%; display: flex; align-items: center; text-align: left; gap: 15px; }
-        .guclu-item img { width: 80px; height: 80px; margin-bottom: 0; }
+        .guclu-grid {
+            gap: 10px;
+        }
+        .guclu-item { 
+            width: 45%; /* Mobilde yan yana 2 tane sığsın */
+            min-width: 140px;
+        }
+        .guclu-item img { 
+            height: 180px; /* Mobilde çok yer kaplamasın diye biraz küçülttük */
+            max-width: 100%;
+        }
     }
-    /* --- MOBİL MENÜ DÜZELTME (NAVBAR) --- */
-@media (max-width: 850px) {
-    /* 1. Kapsayıcıyı Esnek Yap */
-    .cd-slider-nav {
-        height: 70px !important; /* Yüksekliği sabitle */
-        display: flex !important;
-        align-items: center !important; /* Dikey ortala */
+    
+    /* Navbar Düzeltmesi (Değişmedi, korundu) */
+    @media (max-width: 850px) {
+        .cd-slider-nav { height: 70px !important; display: flex !important; align-items: center !important; }
+        .cd-slider-nav nav, .cd-slider-nav ul { width: 100% !important; display: flex !important; justify-content: space-evenly !important; align-items: center !important; padding: 0 !important; margin: 0 !important; }
+        .cd-slider-nav ul li { margin: 0 !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+        .cd-slider-nav .image-icon { width: 40px !important; height: 40px !important; line-height: 40px !important; background-color: transparent !important; border-radius: 50%; display: flex !important; align-items: center !important; justify-content: center !important; }
+        .cd-slider-nav .image-icon img { width: 24px !important; height: auto !important; margin: 0 !important; filter: brightness(0.2); }
+        .cd-slider-nav ul li.selected .image-icon { background-color: rgba(255, 255, 255, 0.3) !important; }
+        .cd-marker { display: none !important; }
     }
-
-    /* 2. Listeyi Yatayda Eşit Dağıt */
-    .cd-slider-nav nav, 
-    .cd-slider-nav ul {
-        width: 100% !important;
-        display: flex !important;
-        justify-content: space-evenly !important; /* Aralarına eşit boşluk koy */
-        align-items: center !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    /* 3. Her İkon Kutusu */
-    .cd-slider-nav ul li {
-        margin: 0 !important; /* Eski sıkıştıran boşlukları sil */
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-
-    /* 4. İkonun Kendisi */
-    .cd-slider-nav .image-icon {
-        width: 40px !important; /* Tıklanabilir alan genişliği */
-        height: 40px !important;
-        line-height: 40px !important;
-        background-color: transparent !important; /* Arka planı temizle */
-        border-radius: 50%;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-    /* İkon Resmi */
-    .cd-slider-nav .image-icon img {
-        width: 24px !important; /* İkon boyutu */
-        height: auto !important;
-        margin: 0 !important;
-        filter: brightness(0.2); /* Siyah görünmesi için */
-    }
-
-    /* Seçili İkon (Aktif Olan) */
-    .cd-slider-nav ul li.selected .image-icon {
-        background-color: rgba(255, 255, 255, 0.3) !important; /* Seçili olana hafif beyaz fon */
-    }
-
-    /* Kaybolan sarı çizgiyi (marker) mobilde gizle, kafa karıştırmasın */
-    .cd-marker {
-        display: none !important;
-    }
-}
 </style>
 
 
@@ -867,25 +865,95 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // 2. VERİLER
         const urunData = {
+            // 1. BOYA & AKSESUAR
             'boya': [
                 { img: "{{ url_for('static', filename='template/img/urunler/boya/01.jpg') }}", name: 'Silikonlu İç Cephe Boyası' },
                 { img: "{{ url_for('static', filename='template/img/urunler/boya/02.jpg') }}", name: 'Tavan Boyası' },
                 { img: "{{ url_for('static', filename='template/img/urunler/boya/03.jpg') }}", name: 'Dış Cephe Astarı' }
             ],
+
+            // 2. EL ALETLERİ
             'alet': [
-                { img: "{{ url_for('static', filename='template/img/urunler/alet.jpg') }}", name: 'Profesyonel Çekiç' },
-                { img: "{{ url_for('static', filename='template/img/urunler/alet.jpg') }}", name: 'Tornavida Seti' },
-                { img: "{{ url_for('static', filename='template/img/urunler/alet.jpg') }}", name: 'Pense' }
+                { img: "{{ url_for('static', filename='template/img/urunler/alet/01.jpg') }}", name: 'Profesyonel El Aleti 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/alet/02.jpg') }}", name: 'Profesyonel El Aleti 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/alet/03.jpg') }}", name: 'Profesyonel El Aleti 3' }
             ],
+
+            // 3. TESİSAT & ELEKTRİK
+            'elektrik': [
+                { img: "{{ url_for('static', filename='template/img/urunler/elektrik/01.jpg') }}", name: 'Elektrik Malzemesi 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/elektrik/02.jpg') }}", name: 'Elektrik Malzemesi 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/elektrik/03.jpg') }}", name: 'Elektrik Malzemesi 3' }
+            ],
+
+            // 4. HIRDAVAT MALZEMELERİ
             'hirdavat': [
-                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}", name: 'Vida Seti' },
-                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}", name: 'Menteşe' },
-                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}", name: 'Kilit Sistemleri' }
+                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat/01.jpg') }}", name: 'Hırdavat Ürünü 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat/02.jpg') }}", name: 'Hırdavat Ürünü 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat/03.jpg') }}", name: 'Hırdavat Ürünü 3' }
             ],
+
+            // 5. NALBURİYE MALZEMELERİ
+            'nalburiye': [
+                { img: "{{ url_for('static', filename='template/img/urunler/nalburiye/01.jpg') }}", name: 'Nalburiye Ürünü 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/nalburiye/02.jpg') }}", name: 'Nalburiye Ürünü 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/nalburiye/03.jpg') }}", name: 'Nalburiye Ürünü 3' }
+            ],
+
+            // 6. ELEKTRİKLİ EL ALETLERİ
+            'elektrikli': [
+                { img: "{{ url_for('static', filename='template/img/urunler/elektrikli/01.jpg') }}", name: 'Elektrikli Alet 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/elektrikli/02.jpg') }}", name: 'Elektrikli Alet 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/elektrikli/03.jpg') }}", name: 'Elektrikli Alet 3' }
+            ],
+
+            // 7. İŞ GÜVENLİK MALZEMELERİ
+            'isguvenlik': [
+                { img: "{{ url_for('static', filename='template/img/urunler/isguvenlik/01.jpg') }}", name: 'İş Güvenliği 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/isguvenlik/02.jpg') }}", name: 'İş Güvenliği 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/isguvenlik/03.jpg') }}", name: 'İş Güvenliği 3' }
+            ],
+
+            // 8. İNŞAAT EKİPMANLARI
+            'insaat': [
+                { img: "{{ url_for('static', filename='template/img/urunler/insaat/01.jpg') }}", name: 'İnşaat Malzemesi 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/insaat/02.jpg') }}", name: 'İnşaat Malzemesi 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/insaat/03.jpg') }}", name: 'İnşaat Malzemesi 3' }
+            ],
+
+            // 9. MAKİNALAR
+            'makine': [
+                { img: "{{ url_for('static', filename='template/img/urunler/makine/01.jpg') }}", name: 'Makina 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/makine/02.jpg') }}", name: 'Makina 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/makine/03.jpg') }}", name: 'Makina 3' }
+            ],
+
+            // 10. TESİSAT MALZEMELERİ
+            'tesisat': [
+                { img: "{{ url_for('static', filename='template/img/urunler/tesisat/01.jpg') }}", name: 'Tesisat Ürünü 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/tesisat/02.jpg') }}", name: 'Tesisat Ürünü 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/tesisat/03.jpg') }}", name: 'Tesisat Ürünü 3' }
+            ],
+
+            // 11. VİTRİFİYE
+            'vitrifiye': [
+                { img: "{{ url_for('static', filename='template/img/urunler/vitrifiye/01.jpg') }}", name: 'Vitrifiye Ürünü 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/vitrifiye/02.jpg') }}", name: 'Vitrifiye Ürünü 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/vitrifiye/03.jpg') }}", name: 'Vitrifiye Ürünü 3' }
+            ],
+
+            // 12. MEKANİK TESİSAT & DOĞALGAZ
+            'dogalgaz': [
+                { img: "{{ url_for('static', filename='template/img/urunler/dogalgaz/01.jpg') }}", name: 'Doğalgaz Ekipmanı 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/dogalgaz/02.jpg') }}", name: 'Doğalgaz Ekipmanı 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/dogalgaz/03.jpg') }}", name: 'Doğalgaz Ekipmanı 3' }
+            ],
+
+            // VARSAYILAN (Eğer resim yoksa bu çıkar)
             'default': [
-                { img: "{{ url_for('static', filename='template/img/urunler/boya.jpg') }}", name: 'Örnek Ürün A' },
-                { img: "{{ url_for('static', filename='template/img/urunler/alet.jpg') }}", name: 'Örnek Ürün B' },
-                { img: "{{ url_for('static', filename='template/img/urunler/hirdavat.jpg') }}", name: 'Örnek Ürün C' }
+                { img: "{{ url_for('static', filename='template/img/urunler/boya/01.jpg') }}", name: 'Genel Ürün 1' },
+                { img: "{{ url_for('static', filename='template/img/urunler/boya/02.jpg') }}", name: 'Genel Ürün 2' },
+                { img: "{{ url_for('static', filename='template/img/urunler/boya/03.jpg') }}", name: 'Genel Ürün 3' }
             ]
         };
 
